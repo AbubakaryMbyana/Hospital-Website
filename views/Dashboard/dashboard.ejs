@@ -1,0 +1,93 @@
+<%- contentFor('HeaderCss') %>
+<!-- perticular page css -->
+
+<%- contentFor('body') %>
+            <div class="content">
+                    <div class="container-fluid">          
+                            <div class="row">
+                                <div class="content">
+                                    <div class="container-fluid">                
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card m-b-20">
+                                                    <div class="card-body">
+                
+                                                        <h4 class="mt-0 header-title">Appointment Datatable</h4>
+                                                        <!-- <p class="text-muted m-b-30">DataTables has most features enabled by
+                                                            default, so all you need to do to use it with your own tables is to call
+                                                            the construction function: <code>$().DataTable();</code>.
+                                                        </p> -->
+                                                      <p style="color: red;">  <%= message %></p>
+
+                                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Fullname</th>
+                                                                <th>Location</th>
+                                                                <th>Phone Number</th>
+                                                                <th>Insurance</th>
+                                                                <th>Email</th>
+                                                                <th>Clinic</th>
+                                                            </tr>
+                                                            </thead>
+                
+                
+                                                            <tbody>
+                                                                <%  for(let p of data){ %> 
+                                                                    <tr>
+                                                                        <td>
+                                                                        <form action="/dashboard/<%= p.id %>?_method=delete" method="Post">
+                                                                            
+                                                                            <button style="border: none; color: red;"><i class="fas fa-trash"></i></button>
+                                                                        </form>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= p.full_name %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= p.location %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= p.phone_number %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span class="badge badge-primary"><%= p.insurance %></span>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= p.email %>                                                    
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= p.clinic %>                                                    
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+                                                                    <%  }%>  
+                                                            
+                                                            </tbody>
+                                                        </table>
+                
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col -->
+                                        </div> <!-- end row -->                      
+                                    </div> <!-- container-fluid -->
+                
+                                </div> 
+                            </div>
+                            <!-- end row -->
+            
+                            
+                            
+                    </div> <!-- container-fluid -->
+                </div> <!-- content -->
+
+                <%- contentFor('FooterJs') %>
+      <!--Morris Chart-->
+      <script src="public/plugins/morris/morris.min.js"></script>
+      <script src="public/plugins/raphael/raphael-min.js"></script>
+      <script src="public/assets/pages/dashboard.js"></script>
+
+
+
+
